@@ -3,7 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Environments (가상 환경)
+# Environments
 .venv/
 
 # Sensitive data

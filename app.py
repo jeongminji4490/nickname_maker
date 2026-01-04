@@ -37,7 +37,7 @@ if submitted:
         with st.spinner("AI is generating nicknames..."):
             try:
                 response = requests.post(
-                    "http://localhost:8000/nickname",
+                    "http://fastapi:8000/nickname",
                     json={
                         "name": name,
                         "age": age,

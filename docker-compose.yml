@@ -1,5 +1,5 @@
 services:
-  api:
+  fastapi:
     build: .
     volumes:
       - .:/app
@@ -8,7 +8,7 @@ services:
       - "8000:8000"
     env_file: .env
 
-  ui:
+  streamlit:
     build: .
     volumes:
       - .:/app
@@ -17,4 +17,4 @@ services:
       - "8501:8501"
     env_file: .env
     depends_on:
-      - api
+      - fastapi
