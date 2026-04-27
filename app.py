@@ -27,7 +27,7 @@ with st.form("nickname_form"):
         gender = st.selectbox("Gender", ["Male", "Female", "Other"])
         vibe = st.text_input("Desired Vibe", placeholder="e.g., cute, cool, funny")
     
-    submitted = st.form_submit_button("Generate Nickname", use_container_width=True)
+    submitted = st.form_submit_button('Submit', use_container_width=True)
 
 # Form submission handling
 if submitted:
