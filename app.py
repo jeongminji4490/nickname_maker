@@ -83,28 +83,3 @@ if submitted:
                 st.info("Start the server with `uvicorn main:app --reload` in terminal.")
             except Exception as e:
                 st.error(f"An error occurred: {str(e)}")
-
-# Sidebar with usage instructions
-with st.sidebar:
-    st.header("📖 How to Use")
-    st.markdown("""
-    1. **Run FastAPI Server**
-       ```bash
-       uvicorn main:app --reload
-       ```
-    
-    2. **Run Streamlit App**
-       ```bash
-       streamlit run app.py
-       ```
-    
-    3. Enter your information and click **Generate Nickname**!
-    """)
-    
-    st.divider()
-    
-    st.header("💡 Tips")
-    st.markdown("""
-    - The more specific your vibe, the better!
-    - Try multiple times to find your favorite nickname
-    """)
