@@ -30,11 +30,9 @@ jobs:
             --document-name "AWS-RunShellScript" \
             --comment "Deploy Docker App" \
             --parameters 'commands=[
-              "git config --global --add safe.directory /home/ubuntu/nickname_maker",
-              "cd /home/ubuntu/nickname_maker",
-              "git pull origin main",
-              "sudo docker compose up --build -d",
-              "sudo docker image prune -f"
+                "sudo -u ubuntu -i bash -c \"cd /home/ubuntu/nickname_maker && git pull origin main\"",
+                "sudo docker compose up --build -d",
+                "sudo docker image prune -f"
             ]' \
             --query "Command.CommandId" \
             --output text)
