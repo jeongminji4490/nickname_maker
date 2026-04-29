@@ -32,7 +32,8 @@ jobs:
             --parameters 'commands=[
                 "cd /home/ubuntu/nickname_maker",
                 "sudo -u ubuntu -i git pull origin main",
-                "sudo docker compose up --build -d",
+                "sudo docker compose build --no-cache",
+                "sudo docker compose up -d",
                 "sudo docker image prune -f"
             ]' \
             --query "Command.CommandId" \
