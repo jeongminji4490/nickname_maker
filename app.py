@@ -27,6 +27,8 @@ with col2:
 
 submitted = st.button("Submit", use_container_width=True)
 
+st.write("VERSION - 1.0")
+
 # Form submission handling
 if submitted:
     if not name or not vibe:
