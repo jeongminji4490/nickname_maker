@@ -30,8 +30,9 @@ jobs:
             --document-name "AWS-RunShellScript" \
             --comment "Deploy Docker App" \
             --parameters 'commands=[
-                "git config --global --add safe.directory /home/ubuntu/nickname_maker",
-                "cd /home/ubuntu/nickname_maker && git pull origin main",
+                "export HOME=/home/ubuntu",
+                "sudo chown -R ubuntu:ubuntu /home/ubuntu/nickname_maker",
+                "sudo -u ubuntu -i bash -c \"cd /home/ubuntu/nickname_maker && git config --global --add safe.directory /home/ubuntu/nickname_maker && git pull origin main\"",
                 "cd /home/ubuntu/nickname_maker && sudo docker compose build --no-cache",
                 "cd /home/ubuntu/nickname_maker && sudo docker compose up -d",
                 "sudo docker image prune -f"
