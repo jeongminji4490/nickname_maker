@@ -13,21 +13,19 @@ st.set_page_config(
 st.title("✨ Nickname Maker")
 st.markdown("Create your own unique nickname!")
 
-# Input form
-with st.form("nickname_form"):
-    st.subheader("Enter your information")
-    
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        name = st.text_input("Name", placeholder="John Doe")
-        age = st.number_input("Age", min_value=1, max_value=120, value=25)
-    
-    with col2:
-        gender = st.selectbox("Gender", ["Male", "Female", "Other"])
-        vibe = st.text_input("Desired Vibe", placeholder="e.g., cute, cool, funny")
-    
-    submitted = st.form_submit_button('Submit', use_container_width=True)
+st.subheader("Enter your information")
+
+col1, col2 = st.columns(2)
+
+with col1:
+    name = st.text_input("Name", placeholder="John Doe")
+    age = st.number_input("Age", min_value=1, max_value=120, value=25)
+
+with col2:
+    gender = st.selectbox("Gender", ["Male", "Female", "Other"])
+    vibe = st.text_input("Desired Vibe", placeholder="e.g., cute, cool, funny")
+
+submitted = st.button("Submit", use_container_width=True)
 
 # Form submission handling
 if submitted:
