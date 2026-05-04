@@ -7,11 +7,22 @@ LLM-based Nickname Recommendation Web Service
 *   Planned and Developed a web service that AI recommends a personalized english nickname based on the user inputs for workers who are using an english nickname in the company
 *   Learning Docker through actual sevice deployment
 
+*   **Development Period**: 5 Days
+*   **URL**: [View Website](http://13.238.182.199:8501/)
+
 ## ✨ Key Features
 ### Nickname Recommendation
 *   Provides personalized English nickname recommendations using **LLM (GPT-4o-mini)** based on user inputs such as Name, Gender, Age, and Desired Vibe.
 
 ## 🛠 Tech Stack
+
+| Layer | Stacks |
+| :--- | :--- |
+| **Client** | Streamlit (Web UI) |
+| **Server** | FastAPI, Docker, AWS EC2 |
+| **CI/CD** | Github Actions |
+| **LLM** | OpenAI GPT-4o-mini |
+
 ### UI & Backend API Server
 *   Developed using **Python-based Streamlit and FastAPI**.
 *   Used **Streamlit** for rapid and easy Web UI development.

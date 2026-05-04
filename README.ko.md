@@ -8,11 +8,22 @@ LLM 기반 영어 닉네임 추천 웹 서비스
 *   회사에서 영어 닉네임을 사용하는 직장인들을 위해, 입력된 정보를 기반으로 AI가 영어 닉네임을 추천해주는 웹사이트 기획 및 개발 
 *   실제 서비스 배포를 통한 Docker 학습 목적
 
+*   **개발기간**: 5 Days
+*   **URL**: [View Website](http://13.238.182.199:8501/)
+
 ## ✨ 주요 기능
 ### 닉네임 추천
 *   사용자 입력(이름, 성별, 나이, 원하는 분위기)을 기반으로 **LLM(GPT-4o-mini)**을 활용하여 최적의 영어 닉네임 추천
 
 ## 🛠 기술 스택
+
+| Layer | Stacks |
+| :--- | :--- |
+| **Client** | Streamlit (Web UI) |
+| **Server** | FastAPI, Docker, AWS EC2 |
+| **CI/CD** | Github Actions |
+| **LLM** | OpenAI GPT-4o-mini |
+
 ### UI 및 백엔드 API 서버
 *   **Python 기반 Streamlit & FastAPI**: 
     *   **Streamlit**을 사용하여 빠르고 간편하게 웹 UI 구현
