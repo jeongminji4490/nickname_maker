@@ -26,7 +26,7 @@ LLM-based Nickname Recommendation Web Service
 
 ## 🔍 Troubleshooting
 
-### 🚨 GitHub Actions SSH Connection Timeout to EC2
+### GitHub Actions SSH Connection Timeout to EC2
 *   **Error**: `2026/04/27 13:48:28 dial tcp ***:22: i/o timeout`
 *   **Cause**: 
     *   The SSH protocol uses Port 22 by default.
@@ -36,7 +36,7 @@ LLM-based Nickname Recommendation Web Service
     *   **Option 1**: Opening Port 22 to all IPs (`0.0.0.0/0`). (Rejected due to security risks).
     *   **Option 2 (Selected)**: **AWS Systems Manager (SSM)**. This allowed secure access to the EC2 instance without exposing Port 22 to the public.
 
-### 🚨 AWS SSM "Dubious Ownership" & $HOME Variable Issues
+### AWS SSM "Dubious Ownership" & $HOME Variable Issues
 *   **Issue**: Encountered `fatal: detected dubious ownership in repository` during SSM execution.
 *   **Cause**: 
     1.  **Dubious Ownership**: Due to Git security updates, Git blocks access if the user running the command (usually `root` or `ssm-user` in SSM) differs from the directory owner (`ubuntu`).

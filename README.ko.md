@@ -27,7 +27,7 @@ LLM 기반 영어 닉네임 추천 웹 서비스
 
 ## 🔍 트러블슈팅
 
-### 🚨 GitHub Actions에서 Docker로 EC2 배포 시 SSH 접속 실패
+### GitHub Actions에서 Docker로 EC2 배포 시 SSH 접속 실패
 *   **에러 내용**: `2026/04/27 13:48:28 dial tcp ***:22: i/o timeout`
 *   **원인 분석**: 
     *   SSH는 22번 포트를 사용하는데, 보안을 위해 인바운드 규칙을 특정 IP(내 컴퓨터)로만 제한
@@ -36,7 +36,7 @@ LLM 기반 영어 닉네임 추천 웹 서비스
     *   **방법 1 (미선택)**: 22번 포트를 전체 개방(`0.0.0.0/0`) 하는 것은 보안상 권장되지 않음
     *   **방법 2 (선택)**: **AWS Systems Manager (SSM)** 사용. 22번 포트를 개방하지 않고도 보안 인증을 통해 EC2 인스턴스에 안전하게 접근하여 해결
 
-### 🚨 AWS SSM 설정 과정 중 Git 권한 및 환경 변수 문제
+### AWS SSM 설정 과정 중 Git 권한 및 환경 변수 문제
 *   **에러 내용**: `fatal: detected dubious ownership in repository at '/home/ubuntu/nickname_maker'`
 *   **원인 분석**: 
     1.  **Dubious Ownership**: Git 보안 업데이트로 인해 명령 실행자(`ssm-user`)와 폴더 소유자(`ubuntu`)가 다를 경우 신뢰할 수 없는 디렉토리로 간주
