@@ -1,26 +1,54 @@
-# Nickname Maker
+# AI Nickname Generator
 LLM-based Nickname Recommendation Web Service
 
-http://13.238.182.199:8501/
+[![Language](https://img.shields.io/badge/language-Korean-blue.svg)](./README.ko.md)
 
-## Stacks
+## 📌 Project Overview
+*   Planned and Developed a web service that AI recommends a personalized english nickname based on the user inputs for workers who are using an english nickname in the company
+*   Learning Docker through actual sevice deployment
 
-- Python-based Streamlit and FastAPI were used to quickly develop a web client (UI) and a backend API server with a clear separation of concerns.
-    - Although the API is relatively simple, FastAPI was intentionally chosen to gain experience designing a structure that can support additional clients in the future, such as Flutter.
-- Docker and Docker Compose were used to containerize the server and standardize the execution environment, improving deployment stability.
-    - By building and running the application using Docker images, a consistent runtime environment can be maintained without manual package installation or local environment setup.
-    - Docker Compose was used to separate API server testing and Web UI testing by running each service in its own container.
-- AWS EC2 was used to provision and operate the cloud environment for deploying the FastAPI server.
-- A GitHub Actions workflow was set up to automate the deployment process.
-    - Manual deployment steps such as SSH access, git pull, and Docker image rebuilds were replaced with a workflow–based deployment.
-    - This approach was chosen to reduce repetitive manual work, minimize human error, and enable faster and more consistent deployments.
-- OpenAI GPT-4o-mini was used as the LLM to generate nickname recommendation responses.
+## ✨ Key Features
+### Nickname Recommendation
+*   Provides personalized English nickname recommendations using **LLM (GPT-4o-mini)** based on user inputs such as Name, Gender, Age, and Desired Vibe.
 
-| Layer  | Stacks             |
-| ------ | ------------------------ |
-| Client | Streamlit (Web UI)       |
-| Server | FastAPI, Docker, AWS EC2 |
-| CI/CD | Github Actions |
-| LLM    | OpenAI GPT-4o-mini       |
+## 🛠 Tech Stack
+### UI & Backend API Server
+*   Developed using **Python-based Streamlit and FastAPI**.
+*   Used **Streamlit** for rapid and easy Web UI development.
+*   Implemented the backend with **FastAPI** considering future service expansion to other platforms (e.g., Flutter).
 
-<img width="2814" height="1918" alt="image" src="https://github.com/user-attachments/assets/a9f9e9c8-5db2-4866-a297-6a7475a22aea" />
+### Deployment & Infrastructure
+*   **Docker & Docker Compose**: 
+    *   Containerized the web application to provide a consistent runtime environment without additional package installations or local setup.
+    *   Used Docker Compose to decouple the Streamlit UI and FastAPI server into independent containers for efficient testing and management.
+*   **AWS EC2**: Primary server hosting.
+*   **GitHub Actions**: Automated CI/CD pipeline for seamless deployment.
+
+## 🔍 Troubleshooting
+
+### 🚨 GitHub Actions SSH Connection Timeout to EC2
+*   **Error**: `2026/04/27 13:48:28 dial tcp ***:22: i/o timeout`
+*   **Cause**: 
+    *   The SSH protocol uses Port 22 by default.
+    *   The Security Group was configured to allow Port 22 only for my local IP address.
+    *   Since GitHub Actions runners use dynamic IP addresses that change with every workflow execution, the server blocked the connection.
+*   **Resolution**: 
+    *   **Option 1**: Opening Port 22 to all IPs (`0.0.0.0/0`). (Rejected due to security risks).
+    *   **Option 2 (Selected)**: **AWS Systems Manager (SSM)**. This allowed secure access to the EC2 instance without exposing Port 22 to the public.
+
+### 🚨 AWS SSM "Dubious Ownership" & $HOME Variable Issues
+*   **Issue**: Encountered `fatal: detected dubious ownership in repository` during SSM execution.
+*   **Cause**: 
+    1.  **Dubious Ownership**: Due to Git security updates, Git blocks access if the user running the command (usually `root` or `ssm-user` in SSM) differs from the directory owner (`ubuntu`).
+    2.  **Missing $HOME**: Environment variables often fail to load during SSM commands, causing Git to fail because it cannot locate the `.gitconfig` file (which requires `$HOME`).
+*   **Resolution**: 
+    *   Manually specified the home directory and executed commands as the `ubuntu` user using `sudo -u ubuntu -i bash -c`.
+    ```bash
+    "export HOME=/home/ubuntu",
+    "sudo -u ubuntu -i bash -c \"cd /home/ubuntu/nickname_maker && ...\""
+    ```
+
+## 📈 Project Achievements
+*   Established a **GitHub Actions-based CI/CD pipeline** to automate the deployment of Dockerized applications to AWS EC2.
+*   Containerized and automated the operation of multi-services (Streamlit, FastAPI) using **Docker Compose**.
+*   Enhanced security by adopting **SSM-based authentication**, resolving network issues associated with traditional SSH methods.
