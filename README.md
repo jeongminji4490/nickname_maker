@@ -1,4 +1,4 @@
-# AI Nickname Generator
+# Nickname Maker
 LLM-based Nickname Recommendation Web Service
 
 [![Language](https://img.shields.io/badge/language-Korean-blue.svg)](./README.ko.md)

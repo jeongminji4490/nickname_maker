@@ -1,4 +1,4 @@
-# 🤖 닉네임 생성기 (Nickname Generator)
+# Nickname Maker
 LLM 기반 영어 닉네임 추천 웹 서비스
 
 [![Language](https://img.shields.io/badge/language-English-green.svg)](./README.md)
